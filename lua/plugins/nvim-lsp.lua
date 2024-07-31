@@ -25,6 +25,17 @@ local M = {
                 },
             }
         }
+        lspconfig.html.setup({
+            cmd = { "vscode-html-language-server", "--stdio" },
+            filetypes = { "html", "htmldjango" },
+            settings = {
+                html = {
+                    suggest = {
+                        html5 = true,
+                    },
+                },
+            },
+        })
     end,
     on_attach = function(client, bufnr)
         -- Keybindings for LSP features
