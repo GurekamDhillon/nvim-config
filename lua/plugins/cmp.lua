@@ -7,6 +7,7 @@ local M = {
 		"hrsh7th/cmp-nvim-lsp", -- LSP completions
 		"L3MON4D3/LuaSnip", -- Snippet engine
 		"saadparwaiz1/cmp_luasnip", -- Snippet completions
+		"hrsh7th/cmp-cmdline", -- Cmdline completions
 	},
 	config = function()
 		local cmp = require("cmp")
@@ -23,12 +24,12 @@ local M = {
 				["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
 				["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
 				["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
-				["<C-y>"] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
+				["<C-y>"] = cmp.config.disable, -- Disable the default <C-y> mapping.
 				["<C-e>"] = cmp.mapping({
 					i = cmp.mapping.abort(),
 					c = cmp.mapping.close(),
 				}),
-				["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+				["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item.
 				["<Tab>"] = cmp.mapping(function(fallback)
 					if cmp.visible() then
 						cmp.select_next_item()
@@ -57,7 +58,7 @@ local M = {
 			}),
 		})
 
-		-- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
+		-- Use buffer source for `/` and `?`
 		cmp.setup.cmdline({ "/", "?" }, {
 			mapping = cmp.mapping.preset.cmdline(),
 			sources = {
@@ -65,7 +66,7 @@ local M = {
 			},
 		})
 
-		-- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+		-- Use cmdline & path source for ':'
 		cmp.setup.cmdline(":", {
 			mapping = cmp.mapping.preset.cmdline(),
 			sources = cmp.config.sources({
@@ -77,6 +78,4 @@ local M = {
 	end,
 }
 
-return {
-	M,
-}
+return M
