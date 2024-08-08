@@ -10,6 +10,7 @@ local M = {
 			sources = {
 				-- Code format
 				null_ls.builtins.formatting.prettier,
+				null_ls.builtins.formatting.gofumpt,
 				null_ls.builtins.formatting.stylua,
 			},
 			-- Setup for LSP on_attach function
