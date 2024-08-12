@@ -9,7 +9,9 @@ local M = {
 			-- Define sources for null-ls
 			sources = {
 				-- Code format
-				null_ls.builtins.formatting.prettier,
+				null_ls.builtins.formatting.prettier.with({
+					filetypes = { "html", "css", "javascript", "typescript", "json", "yaml" },
+				}),
 				null_ls.builtins.formatting.gofumpt,
 				null_ls.builtins.formatting.stylua,
 			},
